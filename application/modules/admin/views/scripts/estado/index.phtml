@@ -1,0 +1,57 @@
+<h1>Control de materias : Editor de estados</h1>
+<h2>Estados</h2>
+<div id="estadoForm">
+    <h3>Estados : Editor</h3>
+    <?php
+    if (isset($this->error)):
+        ?>
+        <ul class="errors"><li><?= $this->error ?></li></ul>
+        <?php
+    endif;
+    $this->form->setAction($this->url());
+    echo $this->form;
+    ?>
+</div>
+<div id="estadoTable">
+    <h3>Estados : Listado</h3>
+    <table id="estados">
+        <tr><th>Nombre</th><th>Clase CSS</th><th>Color de Fondo</th><th>Color de fuente</th><th>Descripción</th></tr>
+        <?php foreach ($this->estados as $estado) : ?>
+            <tr class="estado" id="<?= $estado->getId() ?>">
+                <td class="nombre"><?= $estado->getNombre() ?></td>
+                <td class="class"><?= $estado->getClass() ?></td>
+                <td class="bgcolor"><?= $estado->getBgcolor() ?></td>
+                <td class="fontcolor"><?= $estado->getFontcolor() ?></td>
+                <td class="descripcion" style="background-color: <?= $estado->getBgcolor() ?>; color: <?= $estado->getFontcolor() ?>;"><?= $estado->getDescripcion() ?></td>
+            </tr>
+            <?php
+            $options[$estado->getId()] = $estado->getNombre();
+        endforeach;
+        ?>
+    </table>
+</div>
+
+<div id="condicionTable">
+    <h2>Condiciones</h2>
+    <h3>Condiciones : Listado</h3>
+    <p>Teniendo en cuenta todas las variantes de estado que una materia puede sufrir, se selecciona el <strong>estado</strong> adecuado para cada caso.</p>
+    <table id="condiciones">
+        <tr><th>Correlativa regular</th><th>Correlativa final</th><th>Regular</th><th>Final</th><th>Estado</th></tr>
+        <?php foreach ($this->condiciones as $condicion) : ?>
+            <tr class="condicion" id="<?= $condicion->getId() ?>">
+                <td class="regularCorrelativa"><?= ($condicion->getRegularCorrelativa() == 1) ? 'Si' : (($condicion->getRegularCorrelativa() === null) ? 'No tiene' : 'No') ?></td>
+                <td class="finalCorrelativa"><?= ($condicion->getFinalCorrelativa() == 1) ? 'Si' : (($condicion->getFinalCorrelativa() === null) ? 'No tiene' : 'No') ?></td>
+                <td class="regular"><?= ($condicion->getRegular() == 1) ? 'Si' : 'No' ?></td>
+                <td class="final"><?= ($condicion->getFinal() == 1) ? 'Si' : 'No' ?></td>
+                <td class="estado">
+                    <select name="estados" class="estados" id="<?= $condicion->getId() ?>">
+                            <option value="0" label=""></option>";
+                        <?php foreach ($options as $val => $name) : ?>
+                            <option value="<?= $val ?>" label="<?= $name ?>"<?= ($condicion->getEstadoId() == $val) ? ' selected="selected"' : '' ?>><?= $name ?></option>";
+                        <?php endforeach; ?>
+                    </select>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+    </table>
+</div>

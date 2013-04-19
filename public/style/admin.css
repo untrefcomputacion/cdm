@@ -1,0 +1,200 @@
+/* 
+    Document   : style
+    Created on : 12/07/2011, 17:48:00
+    Author     : Santiago Rojo
+    Description: 
+        General style for the whole application.
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+body, input, select, textarea {
+    font-family: Ubuntu,Verdana,Arial,Helvetica,Sans-Serif;
+    font-size: 12px;
+}
+body {
+    padding: 0;
+    margin: 0;
+    background-image: url(/public/images/bg.png);
+    background-image: url(../images/bg.png);
+    background-repeat: no-repeat;
+    background-position: bottom left;
+    background-attachment: fixed;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+div#contentMain {
+    width: 960px;
+    position: relative;
+    margin: 10px auto;
+    background-color: white;
+}
+div#contentAuth {
+    width: 500px;
+    position: relative;
+    margin: 10px auto;
+    background-color: white;
+    border: solid 1px #9c9;
+}
+
+/* Menu superior */
+div#menu {
+    position: static;
+    top: 0;
+    width: 100%;
+    height: 30px;
+    background-color: #9c9;
+    margin: 0;
+    padding: 5px 0;
+    font-weight: bold;
+}
+ul.menu#left {
+    float: left;
+}
+ul.menu#right {
+    float: right;
+}
+ul.menu {
+    list-style: none;
+    margin: 5px;
+    -moz-padding-start: 0px;
+    -webkit-padding-start: 0px;
+}
+ul.menu li {
+    display: inline-block;
+    padding: 2px 5px;
+    border-right: solid 1px #9c9;
+}
+ul.menu li a {
+    text-decoration: none;
+    color: #000;
+}
+ul.menu li a.blink {
+    color: cornsilk;
+}
+ul.menu li:hover {
+    background-color: #bfb;
+    border-right: solid 1px #333;
+}
+
+/* Configuracion de estados y sus condiciones */
+div#estadoForm {
+    width: 270px;
+    float: left;
+}
+div#estadoTable {
+    width: 680px;
+    float: right;
+}
+div#estadoTable table {
+    margin: 0px;
+}
+div#condicionTable {
+    float: left;
+    clear: left;
+    width: 100%;
+}
+
+/* Configuración de materias */
+div#materiaForm {
+    width: 430px;
+    margin: 0px auto;
+}
+
+dl dt {
+    margin: 5px;
+    padding: 0px;
+    text-align: center;
+}
+dl dd {
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+}
+ul.errors {
+    color: orangered;
+    list-style: none;
+    text-align: center;
+    -moz-padding-start: 0px;
+    -webkit-padding-start: 0px;
+}
+
+form#estado, form#materia {
+    border: solid 1px #9c9;
+}
+form#estado dl dt {
+    display: inline-block;
+    text-align: right;
+    width: 100px;
+}
+form#materia dl dt {
+    display: inline-block;
+    text-align: right;
+    width: 100px;
+}
+form#estado dl dd {
+    display: inline-block;
+    width: 150px;
+}
+form#materia dl dd {
+    display: inline-block;
+    width: 300px;
+}
+form#estado dt#id-label,
+form#estado dd#id-element,
+form#estado dt#action-label,
+form#materia dt#action-label,
+form#estado dd#action-element,
+form#materia dd#action-element {
+    display: none;
+}
+form#estado ul.errors, form#materia ul.errors {
+    float: right;
+    width: 250px;
+}
+form#estado input, form#estado button {
+    width: 130px;
+}
+form#materia input, form#materia select, form#materia button {
+    width: 300px;
+}
+
+/* reCaptcha hacks */
+div#recaptcha_area {
+    margin: 0px auto;
+}
+
+table {
+    position: relative;
+    width: 100%;
+    margin: 10px auto;
+}
+th {
+    background-color: #9c9;
+}
+table, td, th {
+    border-collapse: collapse;
+    border: solid 1px #9c9;
+    padding: 5px;
+}
+
+table tr.estado:hover,
+table tr.materia:hover {
+    cursor: pointer;
+}
+table tr.estado:hover td,
+table tr.materia:hover {
+    color: grey;
+}
+form#estado input#bgcolor,
+form#estado input#fontcolor,
+table#estados td.bgcolor,
+table#estados td.fontcolor {
+    font-family: "Courier New",Courier,monospace;
+}
+
+table#condiciones th {
+    width: 20%;
+}
+table#condiciones td {
+    text-align: center;
+}

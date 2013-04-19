@@ -1,0 +1,9 @@
+<?php
+if (isset($this->error)):
+?>
+<ul class="errors"><li><?= $this->error ?></li></ul>
+<?php
+endif;
+$this->form->setAction($this->url());
+echo $this->form;
+?>

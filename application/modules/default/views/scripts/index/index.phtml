@@ -1,0 +1,52 @@
+<div id="reference">
+    <div id="anchor">Referencia</div>
+    <div id="labels">
+        <?php foreach ($this->estados as $estado) : ?>
+        <div class="<?= $estado->getClass() ?>"><?= $estado->getDescripcion() ?></div>
+        <?php endforeach; ?>
+    </div>
+</div>
+<h1>Control de materias : Plan de estudios</h1>
+<?php
+foreach ($this->anios as $numeroAnio => $anio) :
+    if ($numeroAnio > 0) :
+        ?>
+        <div class="anioTitle" id="<?= $numeroAnio ?>"><h2><?= $numeroAnio ?>º año</h2></div>
+        <table class="anioTable" id="table-<?= $numeroAnio ?>">
+            <tr>
+                <th id="cuatrimestre" class="cuatrimestre">Cuatrimestre</th>
+                <th id="codigo" class="codigo">Código</th>
+                <th id="regular" class="regular">Regular</th>
+                <th id="final" class="final">Final</th>
+                <th id="nota" class="nota">Nota</th>
+                <th id="materia" class="materia">Materia</th>
+                <th id="horas" class="horas">Horas</th>
+            </tr>
+            <?php foreach ($anio as $numeroCuatrimestre => $cuatrimestre): ?>
+                <tr><td rowspan="<?= count($cuatrimestre) + 1 ?>" class="cuatrimestre"><?= $numeroCuatrimestre ?></td></tr>
+                <?php foreach ($cuatrimestre as $materia): ?>
+                    <tr id="<?= $materia->getId() ?>">
+                        <td class="codigo"><input type="hidden" name="id"  class ="codigo" id="<?= $materia->getId() ?>" value="<?= $materia->getCodigo() ?>" /><input type="hidden" name="id"  class ="correlativa" id="<?= $materia->getId() ?>" value="<?= ($materia->getCorrelativa() !== null) ? $materia->getCorrelativa()->getId() : 0 ?>" /><?= $materia->getCodigo() ?></td>
+                        <td class="regular"><input type="checkbox" name="regular" class="regular" id="<?= $materia->getId() ?>" <?= ($materia->getCurricula()->getRegular()) ? 'checked ' : '' ?>/></td>
+                        <td class="final"><input type="checkbox" name="final" class="final" id="<?= $materia->getId() ?>" <?= ($materia->getCurricula()->getFinal()) ? 'checked ' : '' ?>/></td>
+                        <td class="nota"><input type="text" name="nota" class="nota" id="<?= $materia->getId() ?>" value="<?= $materia->getCurricula()->getNota() ?>" maxlength="2" /></td>
+                        <td class="materia"><?= $materia->getNombre() ?></td>
+                        <td class="horas"><?= $materia->getHoras() ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            <?php endforeach; ?>
+        </table>
+        <?php
+    endif;
+endforeach;
+?>
+<div id="stats">
+    <div id="more">[+]</div>
+    <ul class="stats">
+        <li>Regulares: <input type="text" name="regulares" id="regulares" readonly="true" /></li>
+        <li>Aprobadas: <input type="text" name="aprobadas" id="aprobadas" readonly="true" /></li>
+        <li>Promedio: <input type="text" name="promedio" id="promedio" readonly="true" /></li>
+        <li>Avance: <input type="text" name="avance" id="avance" readonly="true" /></li>
+    </ul>
+</div>
+

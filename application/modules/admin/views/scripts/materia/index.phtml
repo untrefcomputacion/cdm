@@ -1,0 +1,32 @@
+<h1>Control de materias : Editor de materias</h1>
+<h2>Materias</h2>
+<div id="materiaForm">
+    <h3>Materias : Editor</h3>
+    <?php
+    if (isset($this->error)):
+        ?>
+        <ul class="errors"><li><?= $this->error ?></li></ul>
+        <?php
+    endif;
+    $this->form->setAction($this->url());
+    echo $this->form;
+    ?>
+</div>
+
+<div id="materiaTable">
+    <h3>Materias : Listado</h3>
+    <table id="materias">
+        <tr><th>Id</th><th>Año</th><th>Cuatrimestre</th><th>Código</th><th>Nombre</th><th>Carga horaria</th><th>Correlativa</th></tr>
+        <?php foreach ($this->materias as $materia) : ?>
+            <tr class="materia" id="<?= $materia->getId() ?>">
+                <td class="id"><?= $materia->getId() ?></td>
+                <td class="anio"><?= $materia->getAnio() ?></td>
+                <td class="cuatrimestre"><?= $materia->getCuatrimestre() ?></td>
+                <td class="codigo"><?= $materia->getCodigo() ?></td>
+                <td class="nombre"><?= $materia->getNombre() ?></td>
+                <td class="horas"><?= $materia->getHoras() ?></td>
+                <td class="correlativa" id="<?= $materia->getCorrelativa() ?>"><?= $this->materias[$materia->getCorrelativa()]->getNombre() ?></td>
+            </tr>
+        <?php endforeach; ?>
+    </table>
+</div>

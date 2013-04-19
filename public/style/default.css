@@ -1,0 +1,238 @@
+/* 
+    Document   : style
+    Created on : 12/07/2011, 17:48:00
+    Author     : Santiago Rojo
+    Description: 
+        General style for the whole application.
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+body, input, select, textarea {
+    font-family: Ubuntu,Verdana,Arial,Helvetica,Sans-Serif;
+    font-size: 12px;
+}
+body {
+    padding: 0;
+    margin: 0;
+    background-image: url(/public/images/bg.png);
+    background-image: url(../images/bg.png);
+    background-repeat: no-repeat;
+    background-position: bottom left;
+    background-attachment: fixed;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+div#contentMain {
+    width: 960px;
+    position: relative;
+    margin: 10px auto;
+    background-color: white;
+}
+div#contentAuth {
+    width: 500px;
+    position: relative;
+    margin: 10px auto;
+    background-color: white;
+    border: solid 1px #eee;
+}
+
+/* Menu superior */
+div#menu {
+    position: static;
+    top: 0;
+    width: 100%;
+    height: 30px;
+    background-color: #eee;
+    margin: 0;
+    padding: 5px 0;
+    font-weight: bold;
+}
+ul.menu#left {
+    float: left;
+}
+ul.menu#right {
+    float: right;
+}
+ul.menu {
+    list-style: none;
+    margin: 5px;
+    -moz-padding-start: 0px;
+    -webkit-padding-start: 0px;
+}
+ul.menu li {
+    display: inline-block;
+    padding: 2px 5px;
+    border-right: solid 1px #eee;
+}
+ul.menu li a {
+    text-decoration: none;
+    color: #000;
+}
+ul.menu li a.blink {
+    color: cornflowerblue;
+}
+ul.menu li:hover {
+    background-color: #fff;
+    border-right: solid 1px #333;
+}
+
+/* Statistics */
+div#stats {
+    position: fixed;
+    top: 60px;
+    left: -135px;
+    width: 150px;
+    background-color: #eee;
+    text-align: right;
+    margin: 0;
+    padding: 5px;
+    font-weight: bold;
+    z-index: 100;
+    box-shadow: 5px 0px 10px #ccc;
+}
+div#stats:hover {
+    left: 0;    
+}
+div#stats > div#more {
+    float: right;
+}
+ul.stats {
+    float: right;
+    list-style: none;
+    margin: 5px;
+    -moz-padding-start: 0px;
+    -webkit-padding-start: 0px;
+}
+ul.stats li {
+    display: block;
+    padding: 2px 5px;
+    border-right: solid 1px #eee;
+}
+ul.stats li > input {
+    width: 35px;
+    margin-left: 5px;
+    border: 0;
+    text-align: center;
+}
+ul.stats li:hover {
+    background-color: #fff;
+    border-right: solid 1px #333;
+}
+
+dl dt {
+    margin: 5px;
+    padding: 0px;
+    text-align: center;
+}
+dl dd {
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+}
+ul.errors {
+    color: orangered;
+    list-style: none;
+    text-align: center;
+    -moz-padding-start: 0px;
+    -webkit-padding-start: 0px;
+
+}
+
+/* reCaptcha hacks */
+div#recaptcha_area {
+    margin: 0px auto;
+}
+
+div.anioTitle {
+    margin: 2px;
+    padding: 5px;
+    border: solid 1px #eee;
+    cursor: pointer;
+}
+div.anioTitle h2 {
+    margin: 0px;
+    padding: 0px;
+    text-align: right;
+}
+div.anioTitle h2:hover:before {
+    content: "▲▼ "
+}
+
+table {
+    position: relative;
+    width: 100%;
+    margin: 10px auto;
+}
+table.anioTable {
+    margin-top: 0px;
+}
+th {
+    background-color: #eee;
+}
+table, td, th {
+    border-collapse: collapse;
+    border: solid 1px #eee;
+    padding: 5px;
+}
+
+th#cuatrimestre {
+    width: 90px;
+}
+th#codigo {
+    width: 50px;
+}
+th#regular {
+    width: 60px;
+}
+td.regular {
+    text-align: center;
+}
+th#final {
+    width: 60px;
+}
+td.final {
+    text-align: center;
+}
+th#nota {
+    width: 60px;
+}
+td.nota {
+    text-align: center;
+}
+td.nota input {
+    width: 20px;
+}
+th#materia {
+
+}
+th#horas {
+    width: 50px;
+}
+
+div#reference {
+    background-color: white;
+    border: solid 1px #eee;
+    position: fixed;
+    top: 45px;
+    right: 5px;
+    z-index: 1000;
+}
+div#anchor {
+    padding: 5px;
+    margin: 2px;
+    text-align: right;
+    cursor: pointer;
+}
+div#labels {
+    display: none;
+}
+div#anchor:hover + div#labels {
+    display: block;
+}
+div#labels div {
+    border: solid 1px #eee;
+    width: 325px;
+    padding: 5px;
+    margin: 2px;
+    text-align: center;
+}

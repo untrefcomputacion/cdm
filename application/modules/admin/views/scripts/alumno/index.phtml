@@ -1,0 +1,14 @@
+<h1>Control de materias : Configuración de alumnos</h1>
+<h2>Alumnos</h2>
+<h3>Alumnos : Listado</h3>
+<table id="alumnos">
+    <tr><th>Nombre</th><th>Apellido</th><th>Email</th><th>Cohorte</th></tr>
+    <?php foreach ($this->alumnos as $alumno) : ?>
+        <tr class="alumno" id="<?= $alumno->getId() ?>">
+            <td class="nombre"><?= $alumno->getNombre() ?></td>
+            <td class="apellido"><?= $alumno->getApellido() ?></td>
+            <td class="email"><?= $alumno->getEmail() ?></td>
+            <td class="cohorte"><?= $alumno->getCohorte() ?></td>
+        </tr>
+    <?php endforeach; ?>
+</table>
