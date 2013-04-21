@@ -16,11 +16,36 @@ set_include_path(implode(PATH_SEPARATOR, array(
 
 /** Zend_Application */
 require_once 'Zend/Application.php';
+require_once 'Zend/Config/Ini.php';
+
+try {
+    $configuration = new Zend_Config_Ini(
+        APPLICATION_PATH . '/configs/application.ini',
+        APPLICATION_ENV,
+        array('allowModifications' => true)
+    );
+} catch (Exception $e) {
+    $configuration = new Zend_Config_Ini(
+        APPLICATION_PATH . '/configs/application.ini',
+        'development',
+        array('allowModifications' => true)
+    );
+
+    if (file_exists(APPLICATION_PATH . '/configs/local.ini')) {
+        $local = new Zend_Config_Ini(
+            APPLICATION_PATH . '/configs/local.ini',
+            APPLICATION_ENV,
+            array('allowModifications' => true)
+        );
+        $configuration->merge($local);
+    }
+}
 
 // Create application, bootstrap, and run
 $application = new Zend_Application(
     APPLICATION_ENV,
-    APPLICATION_PATH . '/configs/application.ini'
+    $configuration
 );
+
 $application->bootstrap()
             ->run();

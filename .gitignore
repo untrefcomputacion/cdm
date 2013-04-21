@@ -1,6 +1,7 @@
 INSTALL.txt
 LICENSE.txt
 README.txt
+application/configs/local.ini
 demos/
 library/Zend
 extras/documentation
