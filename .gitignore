@@ -2,7 +2,8 @@ INSTALL.txt
 LICENSE.txt
 README.txt
 application/configs/local.ini
-demos/
+data/session/*
+!data/session/.placeholder
 library/Zend
 extras/documentation
 *.sublime-project
