@@ -28,7 +28,9 @@ class IndexController extends Zend_Controller_Action
         foreach ($materias as $anios) {
             foreach ($anios as $cuatrimestres) {
                 foreach ($cuatrimestres as $asignatura) {
-                    $asignatura->setCurricula($curriculas[$asignatura->getId()]);
+                    if ($asignatura->getId() !== '0') {
+                        $asignatura->setCurricula($curriculas[$asignatura->getId()]);
+                    }
                 }
             }
         }
@@ -42,7 +44,7 @@ class IndexController extends Zend_Controller_Action
         }
 
         $this->view->headStyle()->appendStyle($styles);
-        
+
         $this->view->estados = $estados;
         $this->view->anios = $materias;
         $this->view->headScript()->setFile($this->view->baseUrl('/scripts/index.js'));

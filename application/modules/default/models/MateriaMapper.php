@@ -69,10 +69,10 @@ class Default_Model_MateriaMapper
 
         return $materias;
     }
-    
+
     /**
      * Devuelve un array con la siguiente estructura:
-     * 
+     *
      * array (
      *     'current' => Default_Model_Materia,
      *     'parent' => Default_Model_Materia,
@@ -82,11 +82,11 @@ class Default_Model_MateriaMapper
      *         Default_Model_Materia
      *     )
      * )
-     * 
+     *
      * Representa una materia, más todo su ambito de correlativas.
-     * 
+     *
      * @param int $materiaId
-     * @return array de Default_Model_Materia 
+     * @return array de Default_Model_Materia
      * @deprecated
      */
     public function fetchAllCorrelativas ($materiaId)
@@ -120,16 +120,23 @@ class Default_Model_MateriaMapper
         foreach ($rowSet as $row) {
             $materia = new Default_Model_Materia();
 
-            $idCorrelativa = (string)$row->correlativa;
-            $anioCorrelativa = $idCorrelativa[0];
-            $cuatrimestreCorrelativa = $idCorrelativa[1];
+            if ($row->correlativa !== '0') {
+                $anioCorrelativa = substr($row->correlativa, 0, 1) ?: 0;
+                $cuatrimestreCorrelativa = substr($row->correlativa, 1, 1) ?: 0;
+
+                $correlativa = $materias[$anioCorrelativa][$cuatrimestreCorrelativa][$row->correlativa];
+            } else if ($row->id !== '0') {
+                $correlativa = $materias[0][0][0];
+            } else {
+                $correlativa = null;
+            }
 
             $materia->setId($row->id)
                     ->setCodigo($row->codigo)
                     ->setNombre($row->nombre)
                     ->setAnio($row->anio)
                     ->setCuatrimestre($row->cuatrimestre)
-                    ->setCorrelativa($materias[$anioCorrelativa][$cuatrimestreCorrelativa][$idCorrelativa])
+                    ->setCorrelativa($correlativa)
                     ->setHoras($row->horas);
 
             $materias[$row->anio][$row->cuatrimestre][$row->id] = $materia;
@@ -155,4 +162,3 @@ class Default_Model_MateriaMapper
     }
 
 }
-
