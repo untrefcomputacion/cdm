@@ -1,8 +1,8 @@
-/* 
+/*
     Document   : style
     Created on : 12/07/2011, 17:48:00
     Author     : Santiago Rojo
-    Description: 
+    Description:
         General style for the whole application.
    Syntax recommendation http://www.w3.org/TR/REC-CSS2/
 */
@@ -91,7 +91,7 @@ div#stats {
     box-shadow: 5px 0px 10px #ccc;
 }
 div#stats:hover {
-    left: 0;    
+    left: 0;
 }
 div#stats > div#more {
     float: right;
@@ -204,6 +204,9 @@ td.nota input {
 }
 th#materia {
 
+}
+td.materia span {
+    cursor: pointer;
 }
 th#horas {
     width: 50px;

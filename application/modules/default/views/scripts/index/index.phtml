@@ -30,7 +30,7 @@ foreach ($this->anios as $numeroAnio => $anio) :
                         <td class="regular"><input type="checkbox" name="regular" class="regular" id="<?= $materia->getId() ?>" <?= ($materia->getCurricula()->getRegular()) ? 'checked ' : '' ?>/></td>
                         <td class="final"><input type="checkbox" name="final" class="final" id="<?= $materia->getId() ?>" <?= ($materia->getCurricula()->getFinal()) ? 'checked ' : '' ?>/></td>
                         <td class="nota"><input type="text" name="nota" class="nota" id="<?= $materia->getId() ?>" value="<?= $materia->getCurricula()->getNota() ?>" maxlength="2" /></td>
-                        <td class="materia"><?= $materia->getNombre() ?></td>
+                        <td class="materia"><span title="<?= $materia->getCorrelativa() ?>"><?= $materia->getNombre() ?></span></td>
                         <td class="horas"><?= $materia->getHoras() ?></td>
                     </tr>
                 <?php endforeach; ?>
